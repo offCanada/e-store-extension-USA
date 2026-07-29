@@ -17,9 +17,11 @@ export class Orchestrator {
 
   init() {
     // TODO: load settings, I18n, etc.
+    console.log('[NutriLens] Orchestrator.init()');
     invalidateCache();
 
     this.domObserver.start(() => {
+      console.log('[NutriLens] DOM mutation detected, re-rendering...');
       this.render();
     });
     this.render();
@@ -27,6 +29,7 @@ export class Orchestrator {
 
   private render() {
     // TODO: check setting to show or not
+    console.log('[NutriLens] render() called');
     this.renderProductBanner();
     this.renderListBanner();
   }
@@ -38,20 +41,28 @@ export class Orchestrator {
   }
 
   private renderProductBanner() {
+    console.log('[NutriLens] renderProductBanner() — checking product view...');
     if (!this.adapter.doesProductViewExist()) {
+      console.warn('[NutriLens] Product view NOT found');
       return;
     }
+    console.log('[NutriLens] Product view exists');
 
     const productElement = this.adapter.getProductViewElement();
+    console.log('[NutriLens] Product element:', productElement);
     if (!productElement || this.processedTracker.isProcessed(productElement)) {
+      console.warn('[NutriLens] Product element null or already processed');
       return;
     }
 
     this.processedTracker.mark(productElement);
     const data = this.adapter.getDataFromProductViewElement(productElement);
+    console.log('[NutriLens] Extracted product data:', data);
     const container = this.adapter.injectViewItemBanner(productElement);
+    console.log('[NutriLens] Injected banner container:', container);
     Renderer.mount(CompactBanner, container, data);
     this.renderedElements.set(productElement, container);
+    console.log('[NutriLens] Banner mounted successfully');
   }
 
   private renderListBanner() {

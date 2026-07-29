@@ -1,3 +1,5 @@
+import { SearchApi } from '@openfoodfacts/openfoodfacts-nodejs';
+
 import { ProductDataSource } from './ProductDataSource';
 
 import { OpenFoodFactsApiConfig as configs } from '@/src/Configs';
@@ -49,23 +51,27 @@ export default class OpenFoodFactsApi extends ProductDataSource {
     return this.parseResponse(data?.product);
   }
 
+  private readonly searchApi = new SearchApi(globalThis.fetch);
+
   async getProductsBySearchQuery(query: string): Promise<ProductResponse> {
-    const url = new URL(configs.product.search.url);
+    try {
+      const response = await this.searchApi.searchGet({
+        q: query,
+        page_size: 1,
+        fields: this.PRODUCT_FIELDS.join(','),
+        langs: 'en',
+      });
 
-    url.search = new URLSearchParams({
-      q: query,
-      page_size: '1',
-      fields: this.PRODUCT_FIELDS.join(','),
-      lc: 'en',
-    }).toString();
+      const data = response.data as OFFSearchResponse | undefined;
 
-    const data = await this.get<OFFSearchResponse>(url);
+      if (!data?.hits?.length) {
+        return this.parseResponse(null);
+      }
 
-    if (!data?.hits?.length) {
+      return this.parseResponse(data.hits[0]);
+    } catch {
       return this.parseResponse(null);
     }
-
-    return this.parseResponse(data.hits[0]);
   }
 
   private parseResponse(data: OFFProduct | null | undefined): ProductResponse {
