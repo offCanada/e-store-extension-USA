@@ -1,4 +1,5 @@
 import { SampleAdapter } from './stores/SampleAdapter';
+import { WalmartAdapter } from './stores/WalmartAdapter';
 
 import type { StoreAdapter } from './StoreAdapter';
 
@@ -13,6 +14,11 @@ export const stores: StoreDefinition[] = [
     hostname: 'www.metro.ca',
     match: '*://*.metro.ca/*',
     adapter: SampleAdapter,
+  },
+  {
+    hostname: 'www.walmart.com',
+    match: '*://*.walmart.com/*',
+    adapter: WalmartAdapter,
   },
 ];
 

@@ -33,6 +33,7 @@
     "wxt": "^0.20.26"
   },
   "dependencies": {
+    "@openfoodfacts/openfoodfacts-nodejs": "2.0.0-alpha.33",
     "lucide-preact": "^1.21.0",
     "preact": "^10.29.0"
   },
