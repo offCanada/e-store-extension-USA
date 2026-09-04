@@ -1,12 +1,12 @@
 # Project: "OFF Canada — USA Online Store Extension (Walmart Adapter)"
 
-| **Intern**       | Dev                                                                        |
-| :--------------- | :------------------------------------------------------------------------- | --- |
-| **Organisation** | [Open Food Facts](https://world.openfoodfacts.org/)                        |
-| **Program**      | Software Engineering Internship — May 2026 to August 2026                  |
-| **Mentor**       | Louis Bastarache                                                           |
-| **GitHub**       | [DevDs1989](https://github.com/DevDs1989)                                  |     |
-| **Email**        | <a href="mailto:deveshchandra187@gmail.com">deveshchandra187@gmail.com</a> |
+| **Intern**       | Dev                                                             |
+| :--------------- | :-------------------------------------------------------------- |
+| **Organisation** | [Open Food Facts](https://world.openfoodfacts.org/)             |
+| **Program**      | Software Engineering Internship — May 2026 to August 2026       |
+| **Mentor**       | Louis Bastarache                                                |
+| **GitHub**       | [DevDs1989](https://github.com/DevDs1989)                       |
+| **Email**        | [deveshchandra187@gmail.com](mailto:deveshchandra187@gmail.com) |
 
 # About Me
 
