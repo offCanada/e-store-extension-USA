@@ -7,8 +7,8 @@ export default defineConfig({
     plugins: [preact()],
   }),
   manifest: {
-    name: 'E-Store Extension Core',
-    description: 'E-Store Extension Core',
+    name: 'Open Food Facts — USA',
+    description: 'Open Food Facts nutrition and health scores on US grocery e-commerce sites.',
     version: '0.0.1',
     host_permissions: ['https://world.openfoodfacts.org/*', 'https://search.openfoodfacts.org/*'],
     web_accessible_resources: [
